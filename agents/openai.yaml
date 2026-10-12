@@ -1,4 +1,4 @@
 interface:
   display_name: "Project Compass"
-  short_description: "Turn unclear or incomplete projects into clear, verified delivery slices"
-  default_prompt: "Use $project-compass to understand this repository, clarify the project contract, audit current gaps, and deliver only the next small verifiable slice."
+  short_description: "Initialize durable project rules for future agent development"
+  default_prompt: "Use $project-compass once to understand this repository, establish project-specific development rules, and prepare a durable handoff for future agents."

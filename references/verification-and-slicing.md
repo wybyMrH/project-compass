@@ -1,4 +1,4 @@
-# Slicing and Verification
+# Slicing and Verification Rules for Later Agents
 
 ## Slice Shape
 
@@ -44,7 +44,7 @@ Use explicit labels:
 
 State the environment, fixture, and limitations. "All tests passed" is not a substitute for the evidence level of the user flow.
 
-## Completion Gate
+## Completion Gate for the Generated Project Rules
 
 Before calling a slice complete, confirm:
 

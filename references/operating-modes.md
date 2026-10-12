@@ -1,6 +1,6 @@
 # Starting Modes
 
-Use this reference during takeover when project documentation is missing, contradictory, or unusually large.
+Use this reference during the one-time takeover when project documentation is missing, contradictory, or unusually large.
 
 ## Empty or Nearly Empty Repository
 
@@ -10,10 +10,10 @@ First inspect the repository rather than creating a full system design:
 - preserve existing package metadata, licenses, and user files;
 - ask for or extract the smallest useful product statement;
 - write a short draft contract with explicit assumptions and open questions;
-- define one demonstrable walking skeleton or research spike;
-- choose only the runtime, persistence, and interface pieces needed for that slice.
+- propose one demonstrable walking skeleton or research spike for a later agent;
+- identify only the runtime, persistence, and interface pieces that a later agent would need for that slice.
 
-The first deliverable may be a decision record, a project map, a running health check, or a thin end-to-end path. It does not need to be a complete application.
+The initialization deliverable may be a decision record, a project map, a health-check plan, or a thin end-to-end path proposal. It does not need to be a complete application, and this mode does not implement the proposed path.
 
 ## Partially Documented Repository
 
@@ -34,7 +34,7 @@ Do not rewrite stable documents at every turn. Read the relevant sections, inspe
 
 ## Conversation Checkpoint
 
-At the end of discovery, present a compact checkpoint:
+At the end of discovery, present a compact checkpoint before generating durable project rules:
 
 ```text
 I understand the project as: <one plain-language paragraph>
@@ -45,3 +45,16 @@ The proposed first slice is: <scope and exclusions>
 ```
 
 Ask only questions that could change the scope, safety, data contract, or acceptance result. Continue with reversible discovery while waiting for answers.
+
+## Project-shape checkpoint
+
+Also state, without pretending to provide specialist implementation advice:
+
+```text
+The project appears to be: <engineering shape, with confidence>
+The important surfaces are: <user, device, API, CLI, worker, model, or other observed surfaces>
+The concerns a later agent should investigate are: <project-specific questions>
+The evidence for this routing is: <files, commands, or observations>
+```
+
+This checkpoint routes future investigation. It must not become a generic catalog of every possible software discipline.

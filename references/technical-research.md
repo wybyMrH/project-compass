@@ -1,6 +1,8 @@
 # Technical Research and Adoption
 
-Use this reference when a public project, framework, hosted service, protocol, or library may replace custom work.
+Use this reference when the project profile or current-state review raises a concrete question about a public project, framework, hosted service, protocol, or library.
+
+The purpose is to guide the initializing agent toward the relevant technical point and public reference. This skill does not prescribe a list of frameworks or specialist skills.
 
 ## Research Record
 
@@ -42,4 +44,4 @@ Before adopting a framework, ask:
 4. Is the dependency proportionate to project size and deployment constraints?
 5. Can the old implementation be retired, or will two production paths remain?
 
-If the answer is uncertain, keep the candidate as a documented option and make the next slice a bounded proof rather than a broad migration.
+If the answer is uncertain, keep the candidate as a documented option and record the question for a later agent. The initialization may propose a bounded proof, but it should not perform a broad migration just to demonstrate that the research was done.
