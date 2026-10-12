@@ -1,11 +1,11 @@
 ---
-name: project-understanding-delivery
+name: project-compass
 description: Guide an AI coding agent from an empty, incomplete, or well-documented repository to clear requirements, trustworthy project understanding, evidence-backed issue analysis, technical choices, and small verifiable delivery slices.
 metadata:
   short-description: Understand projects and deliver one verified feature slice at a time
 ---
 
-# Project Understanding and Sliced Delivery
+# Project Compass
 
 Use this skill when taking over a software project, clarifying an unclear request, reorganizing weak project documentation, auditing implementation gaps, researching technical options, or delivering a feature incrementally. It is designed to work when the repository has no project documents, partial documents, or an established documentation system.
 
@@ -19,6 +19,7 @@ The skill defines a working method, not a product architecture. Adapt names, fil
 - Prefer one small, observable vertical slice across the relevant layers over a batch of layer-specific work.
 - Treat a claim as unverified until a real entry point, meaningful test, or reproducible inspection supports it.
 - Report results, process, limitations, and remaining work in plain language.
+- Match the user's language when practical; explain technical terms instead of assuming specialist knowledge.
 - Preserve user changes, secrets, local configuration, runtime data, logs, caches, and generated evidence unless the user explicitly asks otherwise.
 
 ## Choose the Starting Mode
@@ -82,6 +83,8 @@ Research mature public projects or official documentation when a dependency, pro
 - smallest isolated proof that would justify adoption;
 - exit or rollback plan.
 
+Record the primary source URL, version or commit, and research date for each adopted or rejected candidate. Do not treat a search snippet or an unreviewed benchmark as proof of fit.
+
 Do not add a complete platform when a narrow library or local implementation is enough. Do not keep two production paths solely because both prototypes work. Read [references/technical-research.md](references/technical-research.md) when evaluating public projects or framework adoption.
 
 ## One Slice at a Time
@@ -131,3 +134,7 @@ Lead with the result a user can understand. For each issue or slice, use this or
 7. Limits, skipped checks, and next step.
 
 Explain a technical term when first used. Prefer a small table or flow diagram when it reduces ambiguity. Do not inflate certainty with words such as "complete", "guaranteed", or "zero errors" without matching evidence.
+
+## Skill Self-Check
+
+When changing this skill, run the official validator and exercise the cases in [references/validation-cases.md](references/validation-cases.md). Keep the cases outside the target project; they are for checking the skill's behavior, not for claiming product functionality.

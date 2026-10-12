@@ -1,4 +1,4 @@
-# Project Understanding and Sliced Delivery
+# Project Compass
 
 An open-source Codex skill for taking over software projects that are empty, partially documented, or already organized, then turning unclear work into understandable requirements and small, evidence-backed delivery slices.
 
@@ -26,7 +26,7 @@ The skill does not require `AGENTS.md` or pre-existing project documents. It can
 
 ## Use
 
-Install the skill in the Codex skills directory, then invoke it explicitly with `$project-understanding-delivery` or let the agent select it for repository takeover, project understanding, gap analysis, technical selection, or incremental implementation work.
+Install the skill in the Codex skills directory, then invoke it explicitly with `$project-compass` or let the agent select it for repository takeover, project understanding, gap analysis, technical selection, or incremental implementation work.
 
 The skill is intentionally method-oriented. It does not prescribe a framework, programming language, document path, test runner, or branching model.
 
