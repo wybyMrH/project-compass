@@ -1,4 +1,4 @@
 interface:
   display_name: "Project Compass"
-  short_description: "Initialize durable project rules for future agent development"
-  default_prompt: "Use $project-compass once to understand this repository, establish project-specific development rules, and prepare a durable handoff for future agents."
+  short_description: "Install agent rules and project templates"
+  default_prompt: "Use $project-compass once to install durable AI development rules and project-document templates. Fill only user-confirmed requirements; leave the rest ready for later conversations and do not implement features."

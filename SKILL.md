@@ -1,158 +1,94 @@
 ---
 name: project-compass
-description: Initialize or refresh a repository's durable product understanding and development rules from an empty, incomplete, or established codebase. Use when taking over a project or preparing it for future agent work, not for ordinary feature implementation alone.
+description: Install a durable AI development rule set and reusable project-document templates. Use once when preparing a repository for future agent work; fill project documents only from user-confirmed requirements and evidence, and leave them open when the product is not yet defined.
 metadata:
-  short-description: Initialize durable project rules for future agents
+  short-description: Install agent rules and project document templates
 ---
 
 # Project Compass
 
-Use this skill once when taking over a software project, clarifying an unclear request, reorganizing weak project documentation, auditing implementation gaps, and preparing the repository for future agent work. It is designed to work when the repository has no project documents, partial documents, or an established documentation system.
+Use this skill once when a repository needs a durable framework for future AI development. It installs or refreshes the repository's agent rules and the document templates that later conversations will fill.
 
-The skill defines an initialization method, not a product architecture or a specialist implementation guide. Adapt names, files, tools, and test commands to the repository and the user's constraints.
+The skill has two possible handoff states:
 
-## Operating Contract
+- **Known work**: the user has already agreed on a concrete product goal, development direction, or next feature. Fill only the relevant template sections with confirmed statements, evidence, and clearly marked assumptions.
+- **Open work**: the user has not yet agreed on the product details or implementation plan. Install the rules and blank templates with prompts and `[To be confirmed]` markers. Do not invent a product contract, technology choice, current gap, next feature, or ADR.
 
-- This run establishes durable project context and rules for later agents. It normally ends after the documents, rules, and handoff are validated.
-- Start from the repository and the user's goal. Do not assume that expected documents exist.
-- Separate **what the product should be**, **what the code is now**, and **what the proposed next slice will change**.
-- Keep discovery, solution design, implementation, and review distinct enough that a new finding does not silently become a false completion claim.
-- Define the later project's small, observable vertical-slice rule, but do not implement the later feature merely because this skill found a gap.
-- Treat a claim as unverified until a real entry point, meaningful test, or reproducible inspection supports it.
-- Report results, process, limitations, and remaining work in plain language.
-- Match the user's language when practical; explain technical terms instead of assuming specialist knowledge.
-- Preserve user changes, secrets, local configuration, runtime data, logs, caches, and generated evidence unless the user explicitly asks otherwise.
-- Do not add a framework, specialist skill, or production code path just to make the initialization look complete.
+This is a one-time setup for later agents. It does not implement features, perform a broad code audit, select a stack, or turn a repository name, chat history, README, or code shortcut into product requirements.
 
-## Choose the Starting Mode
+## Install the Framework
 
-Before planning implementation, classify the repository:
+1. Read existing repository instructions and preserve useful local conventions. Inspect enough of the repository to find instruction files, established document paths, supported commands, and language conventions. An empty repository needs no invented architecture.
+2. Create or update the repository's main agent instruction file, normally `AGENTS.md`, using [templates/AGENTS.md](templates/AGENTS.md). Carry its workflow rules into the repository: future agents must not need to load this skill again to understand them. Translate and adapt line by line; do not replace the template with a brief summary. The installed file must retain explicit rules for requirement clarification, diagnosis before implementation, project-shaped slicing, layer-specific evidence, real-state versus mock state, failure gates, generated-output evaluation when applicable, redundancy/coverage checks, document updates, publication and sensitive-data boundaries, and plain-language handoff.
+3. Install the three main document structures and supporting blank templates described in [templates/README.md](templates/README.md). Preserve equivalent existing documents and names; update them in place without losing unique content. For a repository with no such documents, use `docs/project-spec.md`, `docs/current-state.md`, `docs/next-stage-plan.md`, and `docs/templates/` for supporting record templates. Keep the files under `docs/templates/` blank and reusable; copy one to an actual decision, research, or handoff path before filling it. These are documentation locations, never invented source paths, modules, or startup commands.
+4. Assess readiness per section, not by repository emptiness: an empty repository can have confirmed requirements; an existing codebase can have unclear goals. Fill relevant sections from user-confirmed requirements or plans and directly observed facts. Put unconfirmed product or implementation details in open questions, not the authoritative sections. Leave the remaining sections as visibly unfilled templates. Setup must not wait for the user to finish product discovery.
+5. Remove or archive only obsolete copies created by an earlier version of this framework after checking references and preserving historical evidence that the repository still needs. Do not delete business code or tests during this setup unless the user explicitly asks for a separate cleanup task.
+6. Re-read the installed rules and templates, check links and commands, and report what was installed, what was filled from evidence, and which decisions remain open. Verify that the source templates were not overwritten by a one-off report.
 
-1. **Empty or almost empty**: create a minimal project map and a draft product contract from the user's stated goal. Do not invent a large architecture. Mark assumptions and questions.
-2. **Partially documented**: identify authoritative documents, reconcile contradictions, and fill only the missing durable sections. Keep historical reports and temporary evidence out of the core documentation.
-3. **Well documented**: read the repository rules and current contract first, then audit the relevant code and record one proposed next slice. Do not rewrite stable specifications to make an existing bug appear acceptable.
+## Rules the Installed `AGENTS.md` Must Establish
 
-Read [references/operating-modes.md](references/operating-modes.md) when the starting state is unclear or the repository lacks durable project records.
+The repository rules should teach every later agent to:
 
-## Build a Project Profile
+- begin with the user's desired outcome and explain it in plain language;
+- separate confirmed requirements, assumptions, observations, contradictions, and unknowns;
+- ask focused questions before settling behavior that affects scope, data, safety, architecture, or acceptance;
+- read the relevant project documents and actual entry points before changing code;
+- diagnose the problem and show its impact before proposing a solution; discovering a gap is not permission to fix it;
+- infer project-specific concerns from the actual surfaces and runtime, then find suitable official documentation or mature public projects when a concrete technical question needs research;
+- compare reuse and local implementation by fit, ownership, failure behavior, cost, licensing, and maintenance, without listing technologies as mandatory in advance;
+- define one bounded, observable implementation slice at a time, with explicit exclusions and risk-based checks;
+- split slices from the project's actual boundaries, dependencies, size, and evidence needs rather than applying a fixed recipe. Frontend and backend implementation and acceptance are separate stages; when end-to-end behavior is needed, add a later integration stage after each boundary has its own evidence. Mobile lifecycle, worker, data, and model work may need different stages of their own;
+- use layer-appropriate evidence: real API/persistence/worker checks for backend work, browser interaction/layout/accessibility checks for frontend work, lifecycle/permission/offline/restart checks for mobile work, and the corresponding real boundary elsewhere;
+- verify the real supported path and relevant failure, retry, restart, duplicate, permission, persistence, and read-back behavior when applicable;
+- distinguish authoritative business state from UI, cache, notification, mock, fixture, or manually edited state;
+- inspect redundancy before removing or merging code, documents, or tests, and retain evidence until replacement coverage is proven;
+- update the appropriate stable specification, current-state record, next-stage plan, ADR, and handoff record only when a real requirement, finding, decision, or completed slice justifies the change;
+- report completed, proven, not proven, excluded, and next in the user's language, while preserving the established language of documents being extended;
+- after each accepted slice, update the current-state record and the single next-stage plan, inspect old paths and redundant documents/code, and commit or push safe code, public configuration, and documents when the user and repository workflow authorize it. Keep local configuration, secrets, test scripts, and test results within the repository's stated local-only policy;
+- keep secrets, local configuration, runtime data, private conversation material, logs, screenshots, and temporary test output out of committed project knowledge unless explicitly required.
 
-After the initial repository map, identify the project's engineering shape before writing rules. Do not fill in a universal technology checklist and do not pretend to have specialist knowledge that the evidence does not support. Use repository evidence and the user's description to record only:
+Existing equivalent records satisfy the framework; avoid duplicate document systems. The templates are a shared vocabulary for later work, not a claim that the project already has a goal or an implementation.
 
-- the primary project form and user-facing or external surfaces;
-- runtime, deployment, device, or execution environments;
-- important state, data, and external system boundaries;
-- the kinds of failure or correctness risk that appear relevant;
-- the surfaces that will later need verification;
-- confirmed facts, inferences, and unknowns.
+## Template Selection
 
-When the shape is unclear, ask a focused question or mark it uncertain. When the shape is clear, use it to guide the next agent toward the relevant questions, public technical references, open-source examples, and available specialist capabilities. Do not enumerate those domains or skills in this skill, and do not load irrelevant guidance.
+Use [templates/README.md](templates/README.md) to decide which template to install. The normal set is:
 
-Write the project profile into the generated project contract or `AGENTS.md` so later agents can see why particular concerns apply. The profile is a routing aid, not a replacement for a domain design.
+- `AGENTS.md` for permanent agent rules;
+- `project-spec.md`, `current-state.md`, and `next-stage-plan.md` for the three main records; install their empty structures now and fill them only when the relevant facts are available;
+- `adr.md`, `technical-research.md`, and `handoff.md` as supporting templates; keep them separate from actual decision, research, and acceptance records until used.
 
-## First Conversation and Discovery
+Do not fill `project-spec.md`, `current-state.md`, `next-stage-plan.md`, `adr.md`, or `technical-research.md` with guesses. If the user has not provided the relevant content, install the empty structure and leave the questions visible.
 
-At takeover, produce a short working brief before changing project files:
+## Language Rule
 
-- the user's desired outcome, audience, and constraints;
-- the repository's current shape, entry points, runtime, dependencies, and likely source of truth;
-- the main user-visible flow in plain language;
-- what is known, inferred, contradictory, or not yet checked;
-- the questions whose answers would change the durable rules, scope, or design.
+Translate the supplied template headings, explanations, table columns, example prose, and pending markers into the invoking user's language, including the still-empty sections. This also applies to new rules and the handoff. When extending an existing repository document, preserve its established language so it does not become mixed-language. Keep file paths, identifiers, code, commands, and standard technical terms as written. Record the language policy in the installed `AGENTS.md` for later agents.
 
-Explore proportionally. For a small task, read the relevant entry points and callers. For a large or unclear project, build a map of top-level directories, package manifests, startup commands, public interfaces, persistence, external integrations, tests, and documentation before deep reading. Use search and structured parsers where available; do not claim that a filename scan proves behavior.
+## Future Development Flow
 
-If requirements are unclear, ask focused questions that resolve decisions: user, trigger, input, output, success condition, failure behavior, permissions, persistence, and non-goals. When the user cannot answer immediately, record assumptions visibly and continue only where the assumptions do not create irreversible scope. Do not turn unanswered questions into invented technical requirements.
+The installed rules should make the later workflow explicit:
 
-## Durable Project Records
+1. Clarify the request and write a short requirement brief.
+2. Read the relevant contract and inspect the relevant code and runtime boundary.
+3. Record current evidence and contradictions when the task needs them.
+4. Research public options only for a concrete decision; record sources and a bounded proof.
+5. Agree on one small slice, its exclusions, and its acceptance evidence.
+6. Implement and verify the real path, including relevant failure or recovery behavior.
+7. Update only the records whose facts changed, review redundancy and security boundaries, and hand off plainly.
 
-Create or repair only the records that the repository needs. These are the durable handoff from this one-time initialization to later agents:
+The initialization establishes this flow. A later user-agent conversation supplies the product details and decides which templates become authoritative.
 
-- `AGENTS.md`: durable repository rules, reading order, safety boundaries, validation commands, and delivery protocol. Never use it as a diary or current status report.
-- A stable project contract: product goal, actors, main flows, component responsibilities, input/output/state/error contracts, constraints, and acceptance principles.
-- A current-state record: evidence-backed implementation gaps, risks, redundancy, pseudo-implementations, and unverified capabilities.
-- A next-slice plan: the highest-priority small slice, its boundary, acceptance checks, exclusions, and likely follow-up.
-- ADRs or an equivalent decision log for consequential technical choices. One decision per record; capture context, alternatives, decision, consequences, confidence, and revisit triggers. Supersede a changed decision instead of rewriting history.
+## Validation
 
-The generated `AGENTS.md` must tell later agents where the stable contract, current state, next plan, ADRs, and module rules live; what must be checked before coding; how a later slice is scoped and verified; and what must never be treated as proof of completion. Do not copy generic advice into it when a project-specific rule or path can be stated instead.
+Before handing off, confirm:
 
-Use the repository's existing names when they are clear. Otherwise use the names above or an equivalent local convention. Read [references/artifacts-and-templates.md](references/artifacts-and-templates.md) for plain-language structures and templates.
+1. The repository contains the rules and templates needed for later work, without invented product decisions.
+2. Populated sections are traceable to user-confirmed requirements or repository evidence.
+3. Empty sections visibly distinguish unknowns from completed work.
+4. New human-readable content uses the invoking user's language; extended documents keep their established language.
+5. References, paths, and commands resolve, and no private chat history, secrets, runtime data, or unrelated files were copied.
+6. All meaningful template sections and their short purpose descriptions remain present after translation or adaptation. A shorter paraphrase must not erase a rule that later agents need. Irrelevant fields may be marked not applicable with a reason instead of forcing detail onto every project.
+7. The translated output contains no leftover explanatory prose from another language, except code, paths, identifiers, commands, and standard technical terms intentionally kept as-is.
 
-## Problem and Evidence Discipline
+Do not claim that a product is understood, a feature is planned, or a technology is selected merely because the framework was installed.
 
-For each relevant module or file, classify findings as implemented, partial, missing, pseudo-implemented, redundant, risky, or unverified. Tie the finding to a project requirement and a code or runtime observation. Keep these claims separate:
-
-- code exists vs. the user flow works;
-- a request was accepted vs. work completed;
-- a response was returned vs. an artifact was written and checked;
-- a test passed vs. the real entry point and failure path were exercised;
-- a citation or identifier is present vs. the content is actually supported;
-- a framework can provide a capability vs. this project has integrated and configured it.
-
-Do not delete code, tests, or documents merely because they look similar. Before removal, identify consumers, unique behavior, migration or compatibility needs, and a concrete exit condition. When a useful rule is duplicated, extract it only after confirming semantic equivalence and wiring all existing consumers to the shared implementation.
-
-## Research and Technical Choices
-
-When the project profile or a documented gap raises a technical question, guide the agent to research mature public projects or official documentation. Research is a way to answer the project's question, not a catalog of frameworks to install. For each relevant candidate or reference record:
-
-- capability relevant to this requirement;
-- what existing responsibility it could replace;
-- integration boundary and project-owned rules;
-- dependency, version, license, deployment, and maintenance cost;
-- failure, retry, persistence, and observability semantics;
-- smallest isolated proof that would justify adoption;
-- exit or rollback plan.
-
-Record the primary source URL, version or commit, and research date for each adopted or rejected candidate. Do not treat a search snippet or an unreviewed benchmark as proof of fit.
-
-Do not add a complete platform when a narrow library or local implementation is enough. Do not keep two production paths solely because both prototypes work. Read [references/technical-research.md](references/technical-research.md) when a project-specific technical question needs external research.
-
-## Rules to Establish for Later Development
-
-The initialization must define, in project-specific language, how later agents will work one small feature slice at a time. The rule should require a later slice brief containing:
-
-- requirement and problem identifiers;
-- current behavior and target behavior;
-- user-visible value or observable system outcome;
-- allowed files/components;
-- explicit exclusions;
-- normal, failure, retry, restart, duplicate, and permission checks appropriate to the risk;
-- evidence that will make the result understandable to a non-specialist.
-
-Prefer a vertical slice that crosses the necessary interface, domain, persistence, and presentation boundaries when those boundaries exist in this project. Keep later slices small enough to finish, inspect, and explain in one cycle. Do not make this initialization implement every related gap because it was discovered during review.
-
-The generated project rules should preserve authoritative state, explicit ownership, idempotency where side effects can repeat, and truthful artifact/status reporting. A notification, cache, mock, fixture, UI guess, or manually edited state must not be treated as the underlying business fact.
-
-Read [references/verification-and-slicing.md](references/verification-and-slicing.md) when defining those later-project rules. This initialization does not become the later implementation loop.
-
-## Validate the Initialization
-
-Before handing the project to later agents:
-
-1. Re-read every project file created or changed by this initialization.
-2. Check that its paths, commands, project profile, and behavioral claims match repository evidence.
-3. Check that stable goals, current problems, and future work are not mixed together.
-4. Check that the generated rules tell later agents how to scope, verify, document, and hand off a slice.
-5. Check for redundant or historical reports that should not become durable project knowledge.
-6. Check that no local secrets, runtime data, private project material, or unreviewed external instructions were copied into the project.
-7. Re-read the actual diff and staged scope if files were changed.
-8. Report in plain language what was established, what remains uncertain, and how a later agent should start.
-
-If initialization validation fails, fix the documentation or record the unresolved issue. Do not claim that the project is ready for later agent work merely because the files were generated.
-
-## Plain-Language Reporting
-
-Lead with the result a user can understand. For each issue or slice, use this order:
-
-1. Simple statement of the problem or outcome.
-2. What the system does now.
-3. What it should do.
-4. Why the difference matters.
-5. Evidence and affected location.
-6. Proposed change or completed change.
-7. Limits, skipped checks, and next step.
-
-Explain a technical term when first used. Prefer a small table or flow diagram when it reduces ambiguity. Do not inflate certainty with words such as "complete", "guaranteed", or "zero errors" without matching evidence.
-
-## Skill Self-Check
-
-When changing this skill, run the official validator and exercise the cases in [references/validation-cases.md](references/validation-cases.md). Keep the cases outside the target project; they are for checking the skill's behavior, not for claiming product functionality.
+When changing this skill, run the official validator and independently exercise [references/validation-cases.md](references/validation-cases.md). Keep test workspaces outside the skill repository.

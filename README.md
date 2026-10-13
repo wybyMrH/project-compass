@@ -1,44 +1,35 @@
 # Project Compass
 
-An open-source Codex skill for the one-time initialization of software projects that are empty, partially documented, or already organized. It turns unclear requirements and repository facts into durable project rules that future agents can use.
+An open-source Codex skill that installs durable AI development rules and reusable project-document templates into a repository.
 
-It helps an AI coding agent:
+It establishes how future agents:
 
-- understand a repository before changing it;
-- clarify goals in language developers and non-specialists can follow;
-- separate the stable project contract from current problems and next work;
-- identify missing, duplicated, risky, and pseudo-implemented behavior;
-- research public technical options without blindly adding frameworks;
-- define how future agents implement one vertical feature slice at a time;
-- define how future agents verify both the result and the process that produced it;
-- leave a plain-language handoff with remaining limits and unknowns.
+- clarify the user's goal before deciding product behavior;
+- distinguish confirmed requirements, assumptions, evidence, and unknowns;
+- read the relevant project and code boundaries;
+- find and evaluate public technical references when a real question requires them;
+- plan and implement one bounded, observable slice at a time;
+- verify both the result and the process that produced it;
+- keep stable specifications, current findings, next plans, decisions, research, and handoffs separate;
+- explain the work in language the user can follow.
 
-The skill does not require `AGENTS.md` or pre-existing project documents. It can bootstrap the minimum records when a project has none, while preserving an established documentation system when one already exists.
+Project Compass is a one-time setup. It does not implement a feature, choose a framework, or invent a product from an empty folder. It installs the workflow and blank structures. When the user has already agreed on requirements or a plan, the agent fills only the supported sections; otherwise the sections remain visibly pending for later conversations.
 
-## Included records
+## Installed framework
 
-- repository rules in `AGENTS.md`;
-- a stable project contract;
-- a current-state record;
-- a next-slice plan;
-- short ADR decision records;
-- local evidence and temporary reports kept outside durable project knowledge.
+The main output is a repository `AGENTS.md` plus the three primary records:
+
+- `docs/project-spec.md`: stable product and technical contract;
+- `docs/current-state.md`: evidence-backed findings for a real task;
+- `docs/next-stage-plan.md`: one agreed, bounded next slice.
+
+Supporting templates for ADRs, technical research, and handoffs are kept separate from actual records until they are needed. Equivalent existing documents should be preserved and reused.
+
+The generated human-readable documents use the invoking user's language. Existing documents keep their established language when extended.
 
 ## Use
 
-Install the skill in the Codex skills directory, then invoke it explicitly with `$project-compass` for the first serious takeover of a repository, or when its durable agent documentation needs to be reconciled. It is not intended to be loaded for every ordinary feature implementation.
-
-The skill is intentionally method-oriented. It does not prescribe a framework, programming language, document path, test runner, branching model, or specialist discipline. It asks the initializing agent to infer the project's shape and investigate only the technical concerns that the project actually raises.
-
-## Design principles
-
-1. Understand before editing.
-2. Keep product intent, current facts, and next work separate.
-3. Prefer evidence over confident wording.
-4. Define and later deliver one observable slice at a time.
-5. Verify real process and outcome.
-6. Remove duplication only after proving ownership and coverage.
-7. Keep durable documentation readable to people.
+Install the skill in the Codex skills directory and invoke `$project-compass` once when preparing or refreshing a repository's agent workflow. It is not intended for every feature implementation.
 
 ## License
 

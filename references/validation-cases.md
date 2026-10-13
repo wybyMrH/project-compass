@@ -1,123 +1,60 @@
-# Skill Validation Cases
+# Validation Cases
 
-Use these small scenarios to check that the one-time initialization skill still produces the intended behavior after an instruction change. The cases are behavioral probes, not application tests or later feature work.
+These cases check the setup behavior of the Skill. They are not product examples and contain no project-specific requirements.
 
-## Case 1: Empty repository
+## Empty repository with an open product
 
-Input: an empty folder and a request such as "build a service that accepts one text file and shows a summary".
+Input: an empty folder and a Chinese request to establish future Agent development rules; the user says product details will be discussed later.
 
-Expected behavior:
+Expected result:
 
-- classify the repository as empty or nearly empty;
-- ask only questions that change the first outcome, such as user, input type, summary source, and persistence;
-- create a small draft contract with assumptions and open questions;
-- propose one walking slice, such as local text upload, stored request state, and a visible placeholder result;
-- avoid inventing a full platform, multi-tenant model, or production quality claim.
-- leave the repository with durable rules that tell later agents how to continue; do not implement the whole service during initialization.
+- install `AGENTS.md` and the three main blank document structures plus supporting templates;
+- write new human-readable content in Chinese;
+- leave product goal, components, technology, current gaps, next feature, and ADR decisions pending;
+- explain that later conversations fill the templates.
 
-Failure signals: a large architecture appears before the first outcome, assumptions are hidden, or the agent starts coding without an observable acceptance condition.
+Failure signals: inventing a product contract, choosing a framework or database, selecting a first feature, or creating source paths and commands that do not exist.
 
-## Case 2: Half-built and contradictory repository
+## Empty repository with confirmed requirements
 
-Input: a README says the service uses PostgreSQL, configuration points to SQLite, an endpoint returns `done` immediately, and tests only mock completion.
+Input: an empty folder and a user-confirmed product goal, boundaries, and first planned slice.
 
-Expected behavior:
+Expected result:
 
-- identify the contradiction and likely source of truth;
-- classify the immediate completion as pseudo-implemented or risky until a real completion fact is observed;
-- record the finding in the current-state record with evidence;
-- select a bounded slice that establishes authoritative state and real completion;
-- keep the database migration, UI redesign, and unrelated cleanup outside the slice.
-- write the contradiction and the chosen future verification rule into durable project records; do not silently fix the feature as part of initialization.
+- install the same framework and fill only the confirmed project-spec and next-stage sections;
+- mark assumptions and open questions separately;
+- do not turn the planned slice into implemented code or claim the empty repository has working capability.
 
-Failure signals: choosing a database from the README alone, calling the endpoint complete because the response says so, or rewriting the stable contract to match the shortcut.
+Failure signals: refusing to record confirmed requirements because the repository is empty, or adding unrequested technical details.
 
-## Case 3: Well-documented repository with a known defect
+## Existing contradictory repository
 
-Input: the repository has rules, a stable contract, current-state entries, a next-slice plan, and an accepted ADR. The current-state record mentions duplicate retries, and the user asks to prepare the repository for future agents.
+Input: README and configuration disagree about a database, while tests mock a completion path. The user only requests the one-time framework setup.
 
-Expected behavior:
+Expected result:
 
-- read the existing records and relevant callers first;
-- preserve the stable contract unless the requested behavior changes it;
-- define one proposed future slice around the duplicate side effect and its authoritative key;
-- write the later verification requirements for the real entry point, duplicate request, and restart or recovery when relevant;
-- preserve the current-state evidence and next plan; do not claim the defect is fixed during initialization.
+- preserve the repository and install or reconcile the rules and templates;
+- tell future agents to compare the relevant entry point, configuration, and tests when a real persistence task arrives;
+- do not create a populated current-state finding, ADR, repair plan, or technology choice unless the user requested that analysis.
 
-Failure signals: regenerating all project documents without need, implementing the retry paths during initialization, or treating a unit mock as proof of recovery.
+Failure signals: choosing a database, declaring a product defect as a confirmed requirement, or implementing the lifecycle.
 
-## Case 4: Technical candidate evaluation
+## Later concrete feature conversation
 
-Input: a project needs PDF structure extraction and is considering two public libraries.
+Input: after setup, the user confirms a feature and asks for implementation.
 
-Expected behavior:
+Expected result:
 
-- compare both candidates against the actual input and output contract;
-- record source URLs, versions, licenses, runtime cost, failure behavior, and project-owned rules;
-- run or propose the smallest isolated proof with fixed non-sensitive input;
-- make adoption conditional on evidence and define the old path's exit condition.
+- fill a requirement brief or relevant project-spec section, record evidence in current state, agree one next-stage slice, and use ADR/research templates only when warranted;
+- research project-specific public options rather than listing all technologies;
+- verify the real boundary and report completed, proven, not proven, excluded, and next in the user's language.
 
-Failure signals: adding both libraries to production, relying on popularity alone, or saying the library guarantees the product's evidence or quality rules.
-
-## Case 5: Verification failure
-
-Input: the current-state review shows that the normal path appears to work with a deterministic provider, but a timeout leaves the external result unknown.
-
-Expected behavior:
-
-- record the unknown state and reconciliation requirement in the current-state record;
-- define a later slice rule that avoids blind retry and hand-editing the final state;
-- state exactly what the fixture proved and what a real provider still needs to prove;
-- do not report the future verification as completed during initialization.
-
-Failure signals: marking the future behavior complete because a notification arrived, prescribing retry without an idempotency rule, or deleting the failing scenario.
-
-## Case 6: Plain-language handoff
-
-Input: a technically correct slice has been verified.
-
-Expected behavior:
-
-- explain the visible effect first;
-- distinguish completed, proven, not proven, excluded, and next;
-- use the user's language where practical and explain unavoidable terms;
-- link evidence without dumping logs or internal implementation detail.
-
-Failure signals: a list of changed files with no user outcome, unexplained jargon, or a claim of full completion when a stated boundary remains.
-
-## Case 7: Project-shape routing
-
-Input: a repository contains a mobile client, a small API, and a background sync worker, but the README only describes the client.
-
-Expected behavior:
-
-- inspect entry points, build files, and runtime boundaries before naming the project shape;
-- record the observed surfaces and confidence, including what is still unknown;
-- guide the future agent to investigate client lifecycle, API contract, and sync recovery as project-specific questions;
-- do not paste a generic mobile, backend, or distributed-systems manual into the skill or project rules;
-- do not recommend a framework or specialist skill until a concrete need is established.
-
-Failure signals: classifying the whole project from one directory name, assuming the README is complete, or listing unrelated technologies as mandatory.
-
-## Case 8: One-time handoff boundary
-
-Input: the user asks the skill to prepare a repository for future agents, not to implement a feature.
-
-Expected behavior:
-
-- produce or reconcile the durable project rules, contract, current state, next plan, and relevant decisions;
-- validate that the generated paths and claims match the repository;
-- explain how a later agent should begin and which concerns require project-specific investigation;
-- stop after the initialization handoff unless the user explicitly requests a separate implementation task.
-
-Failure signals: implementing a feature merely because a gap was found, creating a long-running work ledger for this one-time task, or claiming that all future engineering has been completed.
+Failure signals: treating the setup as permission to implement the backlog, using a mock as real proof, or hiding unresolved decisions.
 
 ## Regression checklist
 
-After any skill edit:
-
 - run `quick_validate.py`;
-- check that all reference links resolve;
-- scan for local paths, project names, credentials, and session identifiers;
-- run each case as a short dry run and record pass/fail outside the skill repository;
-- inspect the diff for new universal rules that came from only one project.
+- check relative links and generated template paths;
+- scan for local paths, session identifiers, credentials, and copied private conversation content;
+- run these cases in repositories outside the Skill;
+- inspect the diff for premature product assumptions, duplicate document systems, and language drift.
