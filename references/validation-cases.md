@@ -51,6 +51,30 @@ Expected result:
 
 Failure signals: treating the setup as permission to implement the backlog, using a mock as real proof, or hiding unresolved decisions.
 
+## Lasting policy versus task restrictions
+
+Input: a user requests Chinese initialization, supplies confirmed product behavior and a lasting rule to bind the service locally, but restricts writes and publication only for this initialization run.
+
+Expected result: persist confirmed product behavior and the lasting rule; obey one-run restrictions without copying them into permanent rules or the product specification. No implementation progress or test results appear in the stable specification. Unknown product details remain pending.
+
+Failure signals: preserving evaluation directory names, tool locations, or a temporary no-development scope as lasting policy; discarding a genuinely lasting user rule.
+
+## Stage transition with existing evidence
+
+Input: backend and frontend have separate accepted evidence; the user now authorizes integration. The old plan still says there is no frontend, and a current-state row conflicts with a newer verified observation. A genuine unresolved failure remains.
+
+Expected result: replace the current plan with the authorized integration result, reconcile all affected fields and current-state/handoff claims from the actual evidence, retain the unresolved failure, preserve the product agreement and ADR history, and avoid selecting later work. A non-generative stage condenses semantic evaluation to a short not-applicable explanation.
+
+Failure signals: only changing a stage heading, appending success below a contradictory old row, treating prior evidence as a new runtime pass, or dropping unresolved findings.
+
+## Portable verification and delivered evidence
+
+Input: a reusable validation script contains a private absolute tool path; Markdown links point to ignored local screenshots. The user requests portability without publishing private artifacts.
+
+Expected result: discover or configure tools without editing reusable source, clearly fail when prerequisites are absent, and give reproducible evidence summaries without mandatory links to undelivered local artifacts. Verify from a copied checkout without ignored output, and exercise the relevant real checks when tools are available.
+
+Failure signals: committing machine paths, reporting missing tools as a pass, blindly committing screenshots to fix links, or checking only the original workspace.
+
 ## Regression checklist
 
 - run `quick_validate.py`;

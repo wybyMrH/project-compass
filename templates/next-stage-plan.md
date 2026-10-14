@@ -4,19 +4,17 @@ Fill this after a requirement and priority are agreed. Keep one current plan and
 
 Document readiness: `[unfilled template / proposed / agreed]`. Until a real plan is available, every section stays pending and no feature is selected.
 
+On a stage change, refresh current behavior, target, scope, dependencies, evidence, and next action together, then reconcile current state and handoff. A title change must not retain the previous stage's assumptions. Keep confirmed irrelevant sections to one short explanation; unknown applicability stays pending.
+
 ## Selected slice
 
 Describe one coherent outcome that can be independently built, checked, and explained. Include necessary internal components; for example, a backend result may require an API, domain logic, and persistence together. Split unrelated outcomes or distinct acceptance responsibilities, while avoiding separate stages for each function, file, or technical step. If the project has separate backend and frontend boundaries, keep their implementation and acceptance in separate stages; record a later integration stage only when end-to-end proof is required.
 
-- ID and requirement: `[To be confirmed]`
-- Observable user or system outcome: `[To be confirmed]`
-- Current behavior: `[To be confirmed]`
-- Target behavior: `[To be confirmed]`
-- Allowed files, modules, or boundaries: `[To be confirmed]`
-- Explicit exclusions: `[To be confirmed]`
-- Boundary owned by this stage and reason for the split: `[To be confirmed]`
-- Prerequisite stage and handoff contract: `[Not applicable / To be confirmed]`
-- Why this stage is neither too large nor fragmented: `[coherent outcome, necessary components, dependencies, and independent acceptance; To be confirmed]`
+- Requirement and observable outcome: `[To be confirmed]`
+- Current behavior → target behavior: `[To be confirmed]`
+- Owned boundary, necessary components, and exclusions: `[To be confirmed]`
+- Prerequisites and handoff contract: `[Not applicable / To be confirmed]`
+- Why this is the priority and an appropriate stage size: `[dependencies, coherent outcome, independent acceptance; To be confirmed]`
 
 ## Acceptance and evidence
 
@@ -30,7 +28,7 @@ Choose checks that match the boundary. API and persistence work needs real reque
 
 ### Generated-output evaluation (when applicable)
 
-Use this only for work that produces content whose meaning or evidence must be judged. Deterministic validation and semantic quality are different claims; a model judge does not replace human calibration or the underlying evidence.
+Applicability: `[unknown / applicable / not applicable with reason]`. If the stage does not produce content requiring semantic evaluation, replace this subsection with one short not-applicable statement; do not leave the fields below pending. If applicable, use the fields below. Deterministic validation and semantic quality are different claims; a model judge does not replace human calibration or underlying evidence. Preserve this complete subsection in the reusable source template.
 
 - Deterministic format, contract, and evidence checks: `[Not applicable / To be confirmed]`
 - Representative fixed dataset or examples: `[Not applicable / To be confirmed]`

@@ -1,8 +1,8 @@
 # Stable Project Specification
 
-## Status
+## Agreement status
 
-This section says whether the contract is a blank scaffold, partly agreed, or stable enough to guide implementation. It prevents a template from being mistaken for a finished product definition.
+State how much of the product agreement is confirmed, not how much code is completed or tested. Stage progress, verification results, one-run exclusions, and selection of the next task belong in current state, the plan, or the handoff.
 
 - Document readiness: `[unfilled template / partly confirmed / confirmed]`
 - Confirmation source: `[user request, agreed plan, or established authoritative document; no private transcript copy]`
@@ -78,6 +78,8 @@ Record boundaries that prevent scope from expanding silently. Add items only whe
 - `[To be confirmed]`
 
 ## Open questions
+
+Keep unresolved product or contract questions here. Whether an implementation stage passed or a follow-up is selected is not a product question.
 
 - `[Unconfirmed product behavior, environment, or material decision]`
 

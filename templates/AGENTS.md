@@ -2,6 +2,8 @@
 
 This file defines how future AI agents work in this repository. During installation, adapt paths and language to local conventions and remove installer instructions. The remaining rules must work without calling the setup skill again. Keep current status and task diaries in the appropriate records, not in this file.
 
+Persist only lasting project policies and conventions here. Temporary user restrictions still govern the current task, but do not promote one-run scope, evaluation-directory restrictions, or private tool locations into permanent rules unless explicitly requested as lasting policy.
+
 ## Reading order
 
 1. Read this file.
@@ -56,8 +58,10 @@ Installer: replace these links with existing equivalent paths when appropriate. 
 ## Records and safety
 
 - Update the stable specification only when product intent, state meaning, ownership, or an external contract changes.
+- Route information by role: specification for agreed behavior and constraints; current state for observed capability, checks, and unresolved findings; next-stage plan for selected work; current handoff for the latest result. Do not put stage completion, test results, or whether a next stage is selected into the stable specification.
 - Update current state, next-stage plan, ADR, research, or handoff records only when a real requirement, finding, decision, or completed slice justifies it.
 - Keep current state, the one next-stage plan, and the current handoff as replace-in-place snapshots. Refresh changed sections in proportion to the work instead of appending a running diary or creating another stage file. Carry unresolved findings and still-relevant evidence into the updated snapshot. If no next stage is agreed, say so; do not select a follow-up automatically. Preserve accepted ADR history and useful regression coverage.
+- When switching stages or closing a finding, reread all affected fields and related records together: readiness, current/target behavior, scope/exclusions, evidence/limits, and next action. Replace obsolete claims instead of appending a contradictory update; do not merely rename the stage. Keep unknowns pending. Condense confirmed irrelevant sections to a short reason, and update only records whose facts changed; a minor task needs no new research or ADR without an actual decision.
 - At stage completion or when temporary artifacts accumulate, inspect reproducible test/run caches, disposable logs, scratch files, and build output for cleanup under repository policy. Before removal, confirm the paths and ownership, check active consumers, and retain any evidence still needed. Do not treat business data, user files, secrets, reusable tests, or decision history as disposable output. No background cleanup schedule is created by this rule.
 - When a slice is accepted, inspect the full submitted and unsubmitted scope, update the relevant records, and commit or push safe code, public configuration, and documents when user and repository policy authorize it. Keep local configuration, secrets, test scripts, and test results out of the published scope when policy says they are local-only.
 - For a high-risk or multi-boundary slice, use an independent read-only review when available and authorized. The reviewer checks evidence and scope; it does not silently implement the work.
@@ -69,3 +73,5 @@ Installer: replace these links with existing equivalent paths when appropriate. 
 
 - New human-readable documents, headings, table explanations, pending markers, and reports use `[the invoking user's language]`. Extend existing documents in their established language. Keep identifiers, paths, code, and commands unchanged.
 - Project-specific startup and validation commands: `[confirm from repository evidence when a concrete task needs them]`. Do not invent commands during setup or claim syntax checks prove runtime behavior.
+- Put supported commands and prerequisites in one canonical location and link to it. Reusable scripts should discover tools or accept arguments/environment configuration; keep private absolute tool paths in local configuration, not committed code or documents. Missing prerequisites produce a clear unverified result and setup guidance, never an automatic pass.
+- Durable evidence summaries state what ran, the relevant environment, result, limits, and reproduction method. Mark screenshots/logs excluded from version control as optional local evidence; do not make shared Markdown links or success claims depend on their presence. Before handoff or publication, check links against the files actually delivered, not only the current machine.

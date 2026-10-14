@@ -2,6 +2,8 @@
 
 Use one current handoff record at the project's agreed path and replace it when a new stage finishes. Do not accumulate numbered handoffs or append a chronological diary by default. Keep the current result, necessary evidence, open limits, and next step; retain history only when repository policy requires it.
 
+Use the relevant section below for the actual handoff; do not reproduce the unused section as another pending checklist. Cross-check completion and limits against current state and the plan. Summarize evidence and link to the canonical reproduction instructions; identify ignored screenshots/logs as optional local artifacts rather than required shared links.
+
 ## Initialization handoff
 
 Use this when the one-time framework setup ends. It tells the user which rules and empty templates now exist and which product decisions intentionally remain open.

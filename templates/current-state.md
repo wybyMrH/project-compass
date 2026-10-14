@@ -4,6 +4,8 @@ Use this record for a concrete requirement or task. Do not populate it from gues
 
 Keep this as the current snapshot: update or replace affected entries instead of appending a report for each stage. Carry forward unresolved findings and evidence still needed to assess the project. Remove obsolete or resolved detail once its useful facts are reflected in the current summary; use version control for prior snapshots when available. Retain history explicitly required by repository policy.
 
+After an update, reconcile the scope, findings, evidence, and limits with the current plan and handoff. A new success paragraph must not coexist with an obsolete claim that the same boundary is unimplemented or unverified. Keep this record proportional to actual findings, not template length.
+
 Document readiness: `[unfilled template / reviewed scope]`. A placeholder row is not a finding. Do not classify features as missing merely because a project is empty and its requirements are undecided.
 
 ## Review scope
@@ -45,4 +47,4 @@ A file scan is not a semantic audit. During later slices, update evidence for af
 
 Use this only when a real cleanup candidate has consumers and evidence to inspect. Similar names or shorter code are not enough reason to remove something.
 
-Record consumers, unique behavior, coverage, compatibility needs, and an exit condition before removing or merging anything.
+Record consumers, unique behavior, coverage, compatibility needs, and an exit condition before removing or merging anything. If there are no candidates, use one short statement instead of pending fields.

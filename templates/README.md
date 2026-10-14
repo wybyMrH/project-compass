@@ -20,6 +20,8 @@ Install these structures during setup, reusing equivalent repository documents. 
 4. Map each role to the actual installed or existing document path in `AGENTS.md`. Do not link to a path that was never created. Use relative repository paths so the framework is portable.
 5. Keep placeholders visibly unfilled. Do not create issue IDs, feature backlogs, recommended stacks, or speculative ADRs simply to fill the structures.
 6. Keep current state, the next-stage plan, and the current handoff as replace-in-place snapshots, updating only what changed. Carry forward unresolved findings and useful evidence; keep accepted ADR history separately. Do not accumulate a new stage report for every update.
+7. Keep source structures reusable, but make filled records proportional to the task. Unknown sections stay pending; confirmed irrelevant sections use one short explanation. Do not duplicate unused handoff sections or generated-output evaluation checklists in ordinary CRUD plans. Keep commands in one canonical location rather than repeating them across every record.
+8. After a stage change, reconcile all affected fields and related records. Keep product agreements in the specification, observed progress/evidence in current state, and selected work in the plan. Temporary task restrictions remain effective for the run but are not permanent project policy unless explicitly designated.
 
 Translate headings, section descriptions, pending markers, and prose into the invoking user's language when materializing a template. Check the final document for leftover explanatory sentences in the source language. Keep identifiers and filenames stable where the repository depends on them.
 
