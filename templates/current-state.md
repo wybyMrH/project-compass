@@ -2,6 +2,8 @@
 
 Use this record for a concrete requirement or task. Do not populate it from guesses.
 
+Keep this as the current snapshot: update or replace affected entries instead of appending a report for each stage. Carry forward unresolved findings and evidence still needed to assess the project. Remove obsolete or resolved detail once its useful facts are reflected in the current summary; use version control for prior snapshots when available. Retain history explicitly required by repository policy.
+
 Document readiness: `[unfilled template / reviewed scope]`. A placeholder row is not a finding. Do not classify features as missing merely because a project is empty and its requirements are undecided.
 
 ## Review scope

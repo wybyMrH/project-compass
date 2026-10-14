@@ -1,12 +1,12 @@
 # Next Stage Plan
 
-Create this after a requirement and priority are agreed. Keep one selected slice; candidate follow-ups are not promises.
+Fill this after a requirement and priority are agreed. Keep one current plan and replace its contents when the agreed next stage changes; do not append completed stage reports or create a numbered series of plans. Candidate follow-ups are not promises. If no next stage is agreed, leave that status explicit.
 
 Document readiness: `[unfilled template / proposed / agreed]`. Until a real plan is available, every section stays pending and no feature is selected.
 
 ## Selected slice
 
-Describe one outcome that can be built and checked without silently absorbing unrelated layers. This plan selects one implementation boundary. If the project has separate backend and frontend boundaries, keep their implementation and acceptance in separate stages; record a later integration stage only when end-to-end proof is required.
+Describe one coherent outcome that can be independently built, checked, and explained. Include necessary internal components; for example, a backend result may require an API, domain logic, and persistence together. Split unrelated outcomes or distinct acceptance responsibilities, while avoiding separate stages for each function, file, or technical step. If the project has separate backend and frontend boundaries, keep their implementation and acceptance in separate stages; record a later integration stage only when end-to-end proof is required.
 
 - ID and requirement: `[To be confirmed]`
 - Observable user or system outcome: `[To be confirmed]`
@@ -16,7 +16,7 @@ Describe one outcome that can be built and checked without silently absorbing un
 - Explicit exclusions: `[To be confirmed]`
 - Boundary owned by this stage and reason for the split: `[To be confirmed]`
 - Prerequisite stage and handoff contract: `[Not applicable / To be confirmed]`
-- Why this is the next slice and the required depth of detail: `[confirmed priority and dependencies; behavior and boundaries rather than speculative code-level tasks]`
+- Why this stage is neither too large nor fragmented: `[coherent outcome, necessary components, dependencies, and independent acceptance; To be confirmed]`
 
 ## Acceptance and evidence
 
@@ -51,7 +51,8 @@ Define what counts as complete, what remains open, and how to stop or roll back 
 
 - Artifacts and observable results to deliver: `[To be confirmed]`
 - Criteria for calling this slice complete: `[To be confirmed]`
-- Records to update and fallback or rollback boundary: `[To be confirmed]`
+- Current snapshots to replace or refresh, and fallback or rollback boundary: `[To be confirmed]`
+- Disposable test/run artifacts to inspect and clean after verification: `[Not applicable / To be confirmed]`
 
 ## Follow-up candidates
 

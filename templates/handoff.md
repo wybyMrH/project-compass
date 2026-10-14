@@ -1,5 +1,7 @@
 # Development Handoff
 
+Use one current handoff record at the project's agreed path and replace it when a new stage finishes. Do not accumulate numbered handoffs or append a chronological diary by default. Keep the current result, necessary evidence, open limits, and next step; retain history only when repository policy requires it.
+
 ## Initialization handoff
 
 Use this when the one-time framework setup ends. It tells the user which rules and empty templates now exist and which product decisions intentionally remain open.
